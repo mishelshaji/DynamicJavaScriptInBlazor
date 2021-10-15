@@ -1,0 +1,23 @@
+﻿@page "/"
+@inject IJSRuntime _js;
+
+<h1>Hello, world!</h1>
+
+Welcome to your new app.
+
+<SurveyPrompt Title="How is Blazor working for you?" />
+<button @onclick="Alert">Show Alert</button>
+
+@code{
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        var targetUrl = "https://unpkg.com/sweetalert/dist/sweetalert.min.js";
+        await _js.InvokeVoidAsync("loadJs", targetUrl);
+
+    }
+
+    async Task Alert()
+    {
+        await _js.InvokeVoidAsync("swal", "Success!", "Script loaded", "success");
+    }
+}
