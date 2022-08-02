@@ -1,4 +1,4 @@
-﻿function loadJs(sourceUrl) {
+﻿async function loadJs(sourceUrl) {
 	if (sourceUrl.Length == 0) {
 		console.error("Invalid source URL");
 		return;
